@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tyrion – The Hand</title><link rel="stylesheet" href="popup.css"></head><body>
+<header><div class="brand"><img src="icons/128.png" alt="Tyrion seal"><div><div class="kicker">ADVERTPRENEUR / OPERATIONS</div><h1>Tyrion <span>— The Hand</span></h1></div></div><div class="head-actions"><span id="connection" class="connection">Checking…</span><button id="refresh" class="mini-button" title="Refresh">↻</button></div></header>
+<main><section id="pairing" class="pairing" hidden><h2>Connect to Tyrion</h2><p>Open Tyrion’s <strong>Connections</strong> page, copy its browser pairing code, then paste it here. The code remains on this computer.</p><form id="pairForm"><label for="pairKey">Local pairing code</label><input id="pairKey" type="password" minlength="45" autocomplete="off" required placeholder="Paste code from Tyrion"><button type="submit" class="primary">Pair this browser</button></form></section>
+<section id="workspace" hidden><div class="metrics"><div><strong id="tasksCount">—</strong><span>Open tasks</span></div><div><strong id="dueCount">—</strong><span>Due handoffs</span></div><div><strong id="draftsCount">—</strong><span>Drafts to review</span></div></div>
+<div class="notice"><span class="pulse"></span><div><strong>Live local queue</strong><small>Tyrion opens ChatGPT and submits one initial handoff for new work. Progress is reported through Tyrion MCP; no output scraping or retry loops.</small></div></div>
+<section class="steering" aria-labelledby="steerTitle">
+  <div class="steer-head"><div><div class="steer-kicker">INSTRUCTION QUEUE</div><h2 id="steerTitle">Add while ChatGPT works</h2></div><span id="steerCount" class="steer-count">0 queued</span></div>
+  <p class="steer-help">Saved to Tyrion for this conversation. No interruption, automatic sending, or promise of mid-response delivery.</p>
+  <div id="steerContext" class="steer-context">Finding active ChatGPT conversation…</div>
+  <form id="steerForm"><label class="sr-only" for="steerText">Additional instruction</label><textarea id="steerText" rows="3" maxlength="1500" placeholder="Also check… / Don't change… / Prioritize…"></textarea>
+    <button id="steerAdd" type="submit" class="primary">Queue instruction</button></form>
+  <div id="steerList" class="steer-list" aria-live="polite"></div>
+  <div class="steer-actions"><button type="button" id="steerCopy" class="action">Copy pending updates</button><button type="button" id="steerClear" class="ghost">Clear queue</button></div>
+</section>
+<label class="auto-toggle"><span><strong>Auto-start ChatGPT for new tasks</strong><small>One tab per task · up to 3 per hour</small></span><input type="checkbox" id="autoOpenChats" checked aria-label="Automatically open and submit one ChatGPT handoff for new Tyrion tasks"><i></i></label><div id="lastLaunched" class="recent-launch" hidden></div>
+<div class="tabs" role="tablist"><button class="tab active" data-filter="tasks">Tasks</button><button class="tab" data-filter="runs">Scheduled work</button></div>
+<div id="items" class="items" aria-live="polite"></div>
+</section>
+<section id="errorPanel" hidden><h2>Connection unavailable</h2><p id="errorMessage"></p><button id="tryAgain" class="secondary">Try again</button></section>
+</main>
+<footer><button id="openSidePanel" class="ghost">Live panel</button><button id="openTyrion" class="ghost">Open Tyrion</button><span id="lastCheck">Local-first</span><button id="unpair" class="ghost" title="Forget paired browser">Disconnect</button></footer>
+<dialog id="noteDialog" aria-labelledby="noteTitle"><form method="dialog" id="noteForm"><h2 id="noteTitle">Record verified progress</h2><p>Saved to the original Tyrion task. This does not mark work complete.</p><label for="noteText">Progress note</label><textarea id="noteText" maxlength="1500" minlength="5" required rows="4" placeholder="What was actually verified?"></textarea><div class="dialog-actions"><button type="button" id="cancelNote" class="action">Cancel</button><button type="submit" class="primary">Save note</button></div></form></dialog><div id="toast" role="status" aria-live="polite"></div><script src="popup.js"></script></body></html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Tyrion The Hand seal">
+<defs><linearGradient id="r" x2="1" y2="1"><stop stop-color="#932e34"/><stop offset="1" stop-color="#5b1721"/></linearGradient><linearGradient id="g" x1="0" x2="1" y2="1"><stop stop-color="#f6d79a"/><stop offset="1" stop-color="#be8639"/></linearGradient></defs>
+<rect width="96" height="96" rx="24" fill="url(#r)"/>
+<rect x="5" y="5" width="86" height="86" rx="20" fill="none" stroke="#e4b568" stroke-width="1.8"/>
+<circle cx="48" cy="48" r="33.5" fill="none" stroke="#edcb84" stroke-width="2.3"/>
+<circle cx="48" cy="48" r="29" fill="none" stroke="#b87d3f" stroke-width="1" stroke-dasharray="2 4"/>
+<path d="M37 72c-3-4-5-10-6-17l-7-11c-2-4 2-8 5-5l8 9V29c0-5 7-5 7 0v16-25c0-5 7-5 7 0v25-22c0-5 7-5 7 0v23-16c0-5 7-5 7 0v26c0 8-4 13-7 16Z" fill="url(#g)" stroke="#f6e1ae" stroke-width="1.15" stroke-linejoin="round"/>
+<path d="M48 59l2 4 4 2-4 2-2 4-2-4-4-2 4-2z" fill="#711f28"/>
+<circle cx="48" cy="48" r="37.5" fill="none" stroke="#f3d8a5" stroke-width=".6" opacity=".6"/>
+</svg>

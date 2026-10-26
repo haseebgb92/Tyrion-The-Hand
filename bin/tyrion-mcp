@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Private, local STDIO MCP 2.0 endpoint for Secure MCP Tunnel.
+# No credential handling, no remote listener and no model API.
+set -euo pipefail
+cd "$(dirname "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")")"
+exec /usr/bin/python3 -m tyrion.bridge mcp

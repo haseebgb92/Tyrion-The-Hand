@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="tyrion-session" content="__TYRION_SESSION__">
+<meta name="theme-color" content="#f9f7f3">
+<title>Tyrion — The Hand</title>
+<link rel="icon" href="/seal.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+<script src="/scheduler.js" defer></script>
+<script src="/projects.js" defer></script>
+<script src="/companion.js" defer></script>
+<script src="/knowledge.js" defer></script>
+</head><body>
+<div class="shell">
+<aside class="sidebar">
+  <div class="brand"><img src="/seal.svg" class="brandmark" alt="Tyrion seal">
+  <div><div class="brandname">Tyrion</div><div class="brandcaption"><span></span> THE HAND <span></span></div></div></div>
+  <div class="side-caption">WORKSPACE</div>
+  <nav id="nav" aria-label="Main navigation">
+    <button class="navitem active" data-page="dashboard"><span class="navicon" data-icon="layout"></span><span>Overview</span></button>
+    <button class="navitem" data-page="projects"><span class="navicon" data-icon="layers"></span><span>Projects</span></button>
+    <button class="navitem" data-page="tasks"><span class="navicon" data-icon="list"></span><span>Tasks</span><span class="navcount" id="task-navcount"></span></button>
+    <button class="navitem" data-page="dispatch"><span class="navicon" data-icon="zap"></span><span>Dispatch</span></button>
+    <button class="navitem" data-page="approvals"><span class="navicon" data-icon="shield"></span><span>Approvals</span><span class="navcount" id="approval-navcount"></span></button>
+    <button class="navitem" data-page="scheduler"><span class="navicon" data-icon="clock"></span><span>Scheduler</span><span class="navcount" id="scheduler-navcount"></span></button>
+    <button class="navitem" data-page="automations"><span class="navicon" data-icon="zap"></span><span>Automations</span></button>
+    <button class="navitem" data-page="connections"><span class="navicon" data-icon="link"></span><span>Connections</span></button>
+    <button class="navitem" data-page="knowledge"><span class="navicon" data-icon="database"></span><span>Knowledge</span></button>
+    <button class="navitem" data-page="skills"><span class="navicon" data-icon="book"></span><span>Skill Library</span></button>
+    <button class="navitem" data-page="identity"><span class="navicon" data-icon="fingerprint"></span><span>Identity</span></button>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="aside-note"><span class="aside-note-icon" data-icon="shield"></span>
+      <div><strong>Local-first</strong><small>No AI API. Data stays on this machine.</small></div>
+    </div>
+    <div class="aside-footer"><span class="gold-line"></span><span class="crown">✦</span><span class="gold-line"></span></div>
+    <div class="aside-motto">PLAN · ORGANIZE · DECIDE · DO</div>
+    <div class="aside-quote">A steady hand for every task.</div>
+  </div>
+</aside>
+<main class="main">
+  <header class="topbar">
+    <div class="breadcrumbs"><span class="breadcrumb-base">WORKSPACE</span><span class="crumb-arrow">/</span><span id="breadcrumb">Overview</span></div>
+    <div class="top-actions"><span class="app-state"><span class="live-dot"></span>Local engine ready</span><span id="local-stream-state" class="sync-state" title="Local event stream initializing">Connecting local events…</span><span id="chatgpt-sync-state" class="sync-state" title="This reports the last recorded ChatGPT bridge check, not a continuous ChatGPT connection.">Checking handoff…</span>
+      <button id="refresh" class="top-icon" aria-label="Refresh dashboard" title="Refresh"><span data-icon="refresh"></span></button>
+      <div class="avatar" aria-label="Operator">H</div>
+    </div>
+  </header>
+  <section class="content">
+    <div class="hero">
+      <div class="hero-text"><div class="eyebrow"><span class="tiny-diamond">◆</span> THE HAND AT WORK</div>
+        <h1 id="page-title">Your command center<span class="period">.</span></h1>
+        <p id="page-subtitle">One quiet place for projects, skills and the work that matters.</p>
+      </div>
+      <div class="hero-actions"><button class="button-secondary" id="copy-brief"><span data-icon="copy"></span> Copy brief</button>
+        <button class="button-primary" id="new-task"><span data-icon="plus"></span> New task</button></div>
+    </div>
+    <div id="notice" class="notice"><span data-icon="info"></span><span>Project progress is unverified until individually synced. Service connections are shown only when checked; metrics come from Tyrion's local records and verified read-only integrations.</span></div>
+    <div id="page-content" aria-live="polite"><div class="loading">Opening your workspace…</div></div>
+  </section>
+  <footer class="main-footer"><span>TYRION · THE HAND <span class="footer-dot">◆</span> BUILT FOR ADVERTPRENEUR</span><span id="footer-time">Local workspace</span></footer>
+</main></div>
+<dialog id="task-detail-dialog" class="dialog task-detail-dialog" aria-labelledby="task-detail-title">
+  <div class="task-detail-header">
+    <div class="task-detail-heading"><div class="eyebrow">WORKSPACE / SHARED TASK</div><h2 id="task-detail-title">Task updates</h2><div id="task-detail-meta" class="task-detail-meta"></div></div>
+    <button id="close-task-detail" class="task-detail-close" type="button" aria-label="Close task details" title="Close">×</button>
+  </div>
+  <div id="task-detail-instructions" class="task-detail-instructions" hidden></div><div class="task-detail-section"><div class="task-detail-section-header"><span>Progress timeline</span><span id="task-detail-count" class="muted"></span></div><div id="task-detail-updates" class="task-detail-updates" aria-live="polite"></div></div>
+  <form id="task-update-form" method="dialog" class="task-detail-form"><label for="task-update-text">Add a progress note</label><textarea id="task-update-text" rows="3" minlength="5" maxlength="3500" placeholder="What changed, what was verified, or what needs attention?" required></textarea><div class="task-detail-foot"><span>Saved to this task for Tyrion and ChatGPT</span><button type="submit" class="button-primary">Save update</button></div></form>
+</dialog><dialog id="task-dialog" class="dialog"><form id="task-form" method="dialog">
+  <div class="dialog-head"><div><div class="eyebrow">CAPTURE WORK</div><h2>Create a task</h2></div><button type="button" class="icon-button" id="close-dialog" aria-label="Close">×</button></div>
+  <label for="task-title">What needs to be done?</label><input id="task-title" name="title" maxlength="200" minlength="3" required placeholder="e.g. Check Glissimo product imagery">
+  <label for="task-instructions">Instructions for Tyrion and ChatGPT</label><textarea id="task-instructions" maxlength="7000" rows="5" placeholder="What should be done, what files or sites matter, what does success look like? Keep it specific for independent execution."></textarea>
+  <div class="form-grid"><div><label for="task-project">Project</label><select id="task-project"><option value="">General / unassigned</option></select></div>
+    <div><label for="task-priority">Priority</label><select id="task-priority"><option value="normal">Normal</option><option value="high">High</option><option value="low">Low</option></select></div></div>
+  <div class="dialog-footer"><button type="button" class="button-secondary" id="cancel-task">Cancel</button><button type="submit" class="button-primary">Add to Tyrion</button></div>
+</form></dialog>
+<dialog id="skill-dialog" class="dialog skill-dialog"><div class="dialog-head"><div><div class="eyebrow">INSTALLED SKILL</div><h2 id="skill-title">Skill details</h2></div><button type="button" class="icon-button" id="close-skill" aria-label="Close">×</button></div><pre id="skill-body" class="skill-detail"></pre></dialog><dialog id="draft-dialog" class="dialog"><form id="draft-form" method="dialog"><div class="dialog-head"><div><div class="eyebrow">META MANAGER</div><h2>Propose a draft</h2></div><button type="button" class="icon-button" id="close-draft" aria-label="Close">×</button></div><p class="section-caption">This creates a pending approval only. No draft is sent to Meta Manager until you approve it here.</p><label for="draft-account">Workspace</label><select id="draft-account" required></select><label for="draft-platform">Platform</label><select id="draft-platform"><option value="facebook">Facebook</option><option value="instagram">Instagram</option><option value="both">Both</option></select><label for="draft-title">Draft title</label><input id="draft-title" maxlength="150" minlength="3" required placeholder="Campaign idea"><label for="draft-caption">Caption</label><textarea id="draft-caption" maxlength="5000" rows="5" placeholder="Draft caption"></textarea><div class="dialog-footer"><button type="button" id="cancel-draft" class="button-secondary">Cancel</button><button type="submit" class="button-primary">Submit for approval</button></div></form></dialog><dialog id="schedule-dialog" class="dialog scheduler-dialog"><form id="schedule-form" method="dialog"><div class="dialog-head"><div><div class="eyebrow">TYRION TASK ENGINE</div><h2>New schedule</h2></div><button type="button" class="icon-button" id="close-schedule" aria-label="Close">×</button></div><label for="sched-title">Name</label><input id="sched-title" minlength="3" maxlength="170" required placeholder="e.g. Weekly website QA review"><div class="form-grid"><div><label for="sched-project">Project</label><select id="sched-project" required></select></div><div><label for="sched-kind">Task type</label><select id="sched-kind"><option value="blog_draft">Blog draft</option><option value="general_task">General assignment</option></select></div></div><label for="sched-instructions">Instructions and quality requirements</label><textarea id="sched-instructions" minlength="15" maxlength="7000" rows="5" required placeholder="What should Tyrion prepare? How should results be verified?"></textarea><div class="form-grid"><div><label for="sched-cadence">Repeat</label><select id="sched-cadence"><option value="daily">Every day</option><option value="weekly">Selected weekdays</option><option value="once">Once</option></select></div><div><label for="sched-time">Time (Pakistan)</label><input id="sched-time" type="time" required value="20:00"></div></div><div id="sched-weekdays-wrap" hidden><label>Days (Monday–Sunday)</label><div class="weekday-checks"><label><input type="checkbox" value="0">M</label><label><input type="checkbox" value="1">T</label><label><input type="checkbox" value="2">W</label><label><input type="checkbox" value="3">T</label><label><input type="checkbox" value="4">F</label><label><input type="checkbox" value="5">S</label><label><input type="checkbox" value="6">S</label></div></div><div id="sched-once-wrap" hidden><label for="sched-once-date">Run date</label><input id="sched-once-date" type="date"></div><label for="sched-engine">Execution mode</label><select id="sched-engine"><option value="chatgpt_handoff">ChatGPT handoff (manual ChatGPT pickup)</option><option value="ollama_local">Local Ollama (automatic draft, uses computer resources)</option></select><div id="sched-model-wrap" hidden><label for="sched-model">Local model</label><select id="sched-model"><option value="qwen3.5:4b">Qwen 3.5 4B — better quality</option><option value="qwen3.5:0.8b">Qwen 3.5 0.8B — lighter</option></select></div><p class="form-hint">Scheduled ChatGPT handoffs appear in the queue; ChatGPT does not wake or execute automatically. All writing is drafted for review, not published.</p><div class="dialog-footer"><button type="button" id="cancel-schedule" class="button-secondary">Cancel</button><button type="submit" class="button-primary" id="sched-submit">Create schedule</button></div></form></dialog><dialog id="output-dialog" class="dialog scheduler-dialog"><div class="dialog-head"><div><div class="eyebrow">GENERATED RESULT</div><h2 id="output-title">Review draft</h2></div><button type="button" class="icon-button" id="close-output" aria-label="Close">×</button></div><pre id="output-text" class="skill-detail"></pre></dialog><dialog id="project-detail-dialog" class="dialog project-detail-dialog"><div class="dialog-head"><div><div class="eyebrow">PROJECT DIRECTORY</div><h2 id="project-detail-title">Project</h2><p id="project-detail-category" class="section-caption"></p></div><button id="close-project-detail" class="icon-button" aria-label="Close project details">×</button></div><div id="project-detail-body"></div></dialog><dialog id="create-project-dialog" class="dialog"><form id="create-project-form" method="dialog"><div class="dialog-head"><div><div class="eyebrow">TRACK A PROJECT</div><h2>New project</h2></div><button type="button" id="close-project-create" class="icon-button">×</button></div><label for="project-name">Project name</label><input id="project-name" maxlength="90" minlength="2" required placeholder="Client or app name"><label for="project-category">Category</label><input id="project-category" maxlength="120" minlength="3" required placeholder="WordPress / client"><label for="project-notes">Project brief (optional)</label><textarea id="project-notes" maxlength="1800" rows="3" placeholder="Scope, priorities, or instructions for Tyrion"></textarea><div class="dialog-footer"><button class="button-primary" type="submit" id="project-save-button">Save project</button></div></form></dialog><dialog id="project-resource-dialog" class="dialog"><form id="resource-form" method="dialog"><div class="dialog-head"><div><div class="eyebrow">PROJECT REFERENCE</div><h2>Add resource</h2></div><button type="button" id="close-project-resource" class="icon-button">×</button></div><input type="hidden" id="resource-project"><label for="resource-label">Label</label><input id="resource-label" maxlength="90" required placeholder="Official site"><label for="resource-kind">Resource type</label><select id="resource-kind"><option value="website">HTTPS website</option><option value="local_folder">Local project folder</option><option value="repository">GitHub / GitLab repository</option></select><label for="resource-locator">Location / URL</label><input id="resource-locator" maxlength="600" required placeholder="https://example.com"><div class="dialog-footer"><button class="button-primary" type="submit">Attach resource</button></div></form></dialog><div id="toast" role="status" aria-live="polite"></div>
+</body></html>

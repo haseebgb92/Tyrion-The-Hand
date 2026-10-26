@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tyrion-the-hand",
+  "version": "0.6.0",
+  "description": "Tyrion – The Hand: unified project, task and schedule management, shared with ChatGPT via a private local MCP server.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Tyrion – The Hand",
+        "shortDescription": "One workspace for projects, tasks and schedules",
+        "longDescription": "Work with Advertpreneur projects, task queues, local schedules, connected services and review-ready drafts. Tyrion retains your work locally and shares verified changes with ChatGPT through an authorized MCP connection.",
+        "developerName": "Advertpreneur",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "brandColor": "#79232F",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png",
+        "defaultPrompt": [
+          "Show my Tyrion inbox and work that needs attention.",
+          "Check the due schedules in Tyrion and write progress into the original tasks.",
+          "List the projects currently tracked by Tyrion."
+        ]
+      },
+      "onboardingSkill": "./skills/setup/SKILL.md"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+# Live Tyrion data: tasks, projects, pairing secrets, SQLite, logs, research, screenshots
+/data/
+
+# Local credentials and developer configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+*.asc
+*.token
+credentials*.json
+secrets*.json
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Android / Java / Gradle
+android-companion/local.properties
+**/.gradle/
+**/build/
+**/.idea/
+*.iml
+*.apk
+*.aab
+*.class
+
+# Temporary files and machine-specific outputs
+node_modules/
+coverage/
+*.log
+*.pid
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

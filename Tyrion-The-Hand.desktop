@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Tyrion - The Hand
+Comment=Local-first Advertpreneur operations control center
+Exec=/home/haseeb/Documents/Tyrion-The-Hand/launch.sh
+Icon=/home/haseeb/Documents/Tyrion-The-Hand/static/seal.svg
+Terminal=false
+Categories=Office;Development;Utility;
+StartupNotify=true
