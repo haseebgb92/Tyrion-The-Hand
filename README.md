@@ -5,7 +5,7 @@
 <p align="center"><strong>A local-first command center for Advertpreneur projects, tasks, research, and authorized AI handoffs.</strong></p>
 <p align="center">Linux desktop · Chrome companion · Android companion · Python MCP bridge</p>
 
-> **Repository status (October 26, 2026):** Private development project. The PC dashboard and local integrations are operational; some external/ChatGPT/Android workflows require separate authorization or validation. This repository contains source code and documentation, **not** the running PC database or any connected account credentials.
+> **Repository status (October 26, 2026):** Public development snapshot; the project is actively being developed. The PC dashboard and local integrations are operational; some external/ChatGPT/Android workflows require separate authorization or validation. This repository contains source code and documentation, **not** the running PC database or any connected account credentials.
 
 ## At a glance
 
